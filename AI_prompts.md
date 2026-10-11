@@ -270,3 +270,23 @@ These are things typed to Claude after a problem's main prompt, listed here so t
 > Do a final audit of your work. Does everything make sense? Do all the numbers check out? I told you not to invent any numbers, so please make sure this is true as well
 
 **Outcome:** every dollar figure in the deliverables was checked against the database or recomputed; unsupported numbers were removed or labelled (a token-saving estimate was removed, hypothetical inputs were labelled, a note was added to `output/mcp_smoke.json`, and `output/harness.md` now lists the numbers that are design choices rather than shop data).
+
+---
+
+## Problem 11: Submit to GitHub
+
+### Prompt 1
+
+> Problem 11: Submit to GitHub
+>
+> Ok, now let's push this code to a public GitHub repository such that graders of this assignment will be able to clone it. Put the Github repo URL in output/github_url.txt. Note: Please do NOT push the real .env file to the GitHub repo, but please DO include both database files (both the original and working copy) under data/ . The expected file layout is attached, so please make sure that the GitHub repo files follow this format. The README.md file should explain to copy the original database to the working copy when you need a clean run, start the MCP server, start the FastAPI backend, start the React dashboard, reset the database before a full 3 ticket run.
+>
+> (Attached: a screenshot of the expected file layout for `hw5/`.)
+
+**Outcome:** Claude scanned for secrets, added `README.md`, `requirements.txt`, `.env.example` and `.gitignore`, created the public repo https://github.com/beatricek222/campus-customs-hw5, wrote the URL to `output/github_url.txt`, and pushed both databases but not the real `.env`.
+
+### Follow-up prompt(s)
+
+_None yet._
+
+**What was lacking in the first prompt:** _To be filled in once a follow-up is needed._
