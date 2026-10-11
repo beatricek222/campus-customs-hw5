@@ -1,0 +1,107 @@
+{
+  "generated_from": "data/campus_customs_new.db and output/audit_trail.json after the Problem 9 run",
+  "starting_checking_balance": 3400.0,
+  "ending_checking_balance": 160.0,
+  "note": "The dashboard approvals were clicked by Claude Code on Beatrice's explicit instruction in Problem 9 (a person must approve; she asked for all tickets to be resolved). The name stored in the database/ticket notes is what the dashboard sent.",
+  "tickets": [
+    {
+      "id": 101,
+      "subject": "Bulldog tee (Tauhid Zaman)",
+      "final_status": "resolved",
+      "outcome": "Size S tee is out of stock (0 of 1), so the order could not ship and no delivery date was promised. The overdue $840 reprint invoice 501 was paid after a person approved it.",
+      "agent_contributions": {
+        "boss": "Ticket 101 is blocked: 0 of 1 requested size-S tee is on hand. The linked $840 invoice is open and 3 days overdue, but the data does not establish whether a reorder has already been placed or whether paying it will trigger restock. No payment was made without human approval; the ticket is waiting for approval. The customer-service draft gives no availability or delivery-date promise and has not been sent.",
+        "inventory": "CC-TEE-WHITE size S cannot be filled from current stock: 0 on hand for 1 requested, so the shortfall is 1. The linked invoice describes a rush reprint from Bulldog Print Co, whose listed 5-day lead time implies an earliest restock estimate of 2026-09-05, conditional on an approved reorder being placed; this is not a delivery promise.",
+        "accounting": "Invoice 501 is $840.00, open and 3 days overdue, with no payment recorded; the payment is affordable alongside all other obligations due within 7 days. Checking holds $3,400.00, and paying the $840.00 invoice plus $2,400.00 rent due September 2 would leave $160.00; no payment was made because no human approver is on record.",
+        "facilities": "Not called on this ticket.",
+        "customer_service": "The customer requested 1 Classic Bulldog Tee in size S. None are currently on hand, so the draft explains that the item is unavailable now and that we will confirm once the restock status is known; no availability or delivery date is promised."
+      },
+      "human_approvals": [
+        {
+          "required": true,
+          "what": "Pay vendor invoice 501 ($840.00) to Bulldog Print Co",
+          "amount": 840.0,
+          "payment_id": 1,
+          "approved_by_recorded_in_database": "Beatrice (recorded by dashboard)",
+          "route": "POST /api/tickets/101/approve-payment",
+          "balance_before": 3400.0,
+          "balance_after": 2560.0
+        }
+      ],
+      "cash_change": -840.0,
+      "run": {
+        "run_id": "cfb99c33-1eed-4f13-bb6d-53bc6c65885c",
+        "requests": 13,
+        "tool_calls": 15,
+        "input_tokens": 60266,
+        "output_tokens": 4514
+      }
+    },
+    {
+      "id": 102,
+      "subject": "Rent due (Elm City Properties)",
+      "final_status": "resolved",
+      "outcome": "The rent notice matched lease 1 ($2,400 due 2026-09-02). Rent was paid after a person approved it; lease next due date moved to 2026-10-02.",
+      "agent_contributions": {
+        "boss": "Ticket 102’s rent notice matches the lease: $2,400 is due to Elm City Properties on 2026-09-02, in two days. Checking has $2,560 and no other obligations are due by that date, leaving a projected $160 after rent. No payment was made because no human approver is on record; the ticket is waiting for approval.",
+        "inventory": "Not called on this ticket.",
+        "accounting": "The $2,400 rent due September 2 is affordable from checking based on all obligations due through that date: after rent, projected cash is $160. No payment was made because no named human approver is on record; approval is requested before paying.",
+        "facilities": "The notice matches lease 1: Elm City Properties is the landlord on file, and rent is due in 2 days. The lease records $2,400 due 2026-09-02; no rent payment is recorded for this lease.",
+        "customer_service": "Not called on this ticket."
+      },
+      "human_approvals": [
+        {
+          "required": true,
+          "what": "Pay rent on lease 1 ($2,400.00) to Elm City Properties",
+          "amount": 2400.0,
+          "payment_id": 2,
+          "approved_by_recorded_in_database": "Beatrice (authorized in chat via Claude Code) (recorded by dashboard)",
+          "route": "POST /api/tickets/102/approve-payment",
+          "balance_before": 2560.0,
+          "balance_after": 160.0
+        }
+      ],
+      "cash_change": -2400.0,
+      "run": {
+        "run_id": "8dc70479-ae22-4143-9e92-5284fc46cb35",
+        "requests": 11,
+        "tool_calls": 14,
+        "input_tokens": 48532,
+        "output_tokens": 2488
+      }
+    },
+    {
+      "id": 103,
+      "subject": "Bulk hoodie discount (Yale AI Club)",
+      "final_status": "resolved",
+      "outcome": "Only 8 of 20 size M hoodies are in stock. The team recommended $52 per hoodie (never below the $22 cost) only if a person approves and the 12-unit shortfall can be sourced; a restock is not affordable on $160. A person accepted the recommendation; nothing was paid or ordered.",
+      "agent_contributions": {
+        "boss": "Ticket 103 remains waiting_approval; no price or fulfillment commitment has been made. The proposed $52/unit price is a $6 discount from $58 list, with $30/unit ($600 total) gross margin on 20 units. Only 8 size-M hoodies are on hand, and the 12-unit shortfall cannot be promised: supplier availability and actual restock price are unconfirmed.",
+        "inventory": "CC-HOOD-NAVY size M has 8 on hand against 20 requested, leaving a 12-unit shortfall. At the proposed $52/unit, gross margin is $30/unit and $600 across 20 units; a 12-unit restock has an estimated cost basis of $264, but current checking cash is $160 and Accounting found it unaffordable. Bulldog Print Co is only an inferred possible apparel source, not a confirmed hoodie supplier; its 5-day lead time would imply September 5, 2026 at earliest after an approved and placed order.",
+        "accounting": "The 12-unit restock is not affordable from current cash: its estimated cost is $264.00 against a checking balance of $160.00, a $104.00 shortfall even before other obligations. The cash outlook also shows $2,400.00 rent due October 2, 2026, so including both rent and the restock would leave a $2,504.00 shortfall; no payment or order was made.",
+        "facilities": "Not called on this ticket.",
+        "customer_service": "Yale AI Club requested 20 Basic Hoodie Big Yale hoodies, size M, and a bulk price. We can confirm 8 are on hand, leaving 12 not currently available; neither additional stock nor requested pricing is approved, so the ticket is waiting for approval."
+      },
+      "human_approvals": [
+        {
+          "required": true,
+          "what": "Accept the team's pricing recommendation ($52/unit conditional); no payment, no reorder authorized",
+          "amount": 0.0,
+          "payment_id": null,
+          "approved_by_recorded_in_database": "Beatrice (in the ticket notes: 'Team recommendation accepted by Beatrice.')",
+          "route": "POST /api/tickets/103/resolve",
+          "balance_before": 160.0,
+          "balance_after": 160.0
+        }
+      ],
+      "cash_change": 0.0,
+      "run": {
+        "run_id": "9a666e94-e344-4b32-9972-8a3d63c5ff70",
+        "requests": 18,
+        "tool_calls": 21,
+        "input_tokens": 90563,
+        "output_tokens": 7415
+      }
+    }
+  ]
+}

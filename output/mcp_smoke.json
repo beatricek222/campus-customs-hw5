@@ -1,0 +1,62 @@
+{
+  "server": "campus-customs",
+  "connection": "stdio via .mcp.json",
+  "tools_listed": [
+    "get_lease_due",
+    "get_pricing",
+    "get_stock"
+  ],
+  "database": "data/campus_customs_new.db",
+  "tests": [
+    {
+      "prompt": "Is CC-TEE-WHITE size S in stock for ticket 101?",
+      "tool": "get_stock",
+      "arguments": {
+        "sku": "CC-TEE-WHITE",
+        "size": "S"
+      },
+      "output": {
+        "sku": "CC-TEE-WHITE",
+        "name": "Classic Bulldog Tee",
+        "size": "S",
+        "qty": 0,
+        "location": "Aisle B"
+      },
+      "matches_database": true
+    },
+    {
+      "prompt": "When is rent due on lease 1 for ticket 102, and how many days from today?",
+      "tool": "get_lease_due",
+      "arguments": {
+        "lease_id": 1
+      },
+      "output": {
+        "id": 1,
+        "space_name": "Chapel Street shop",
+        "landlord": "Elm City Properties",
+        "monthly_rent": 2400.0,
+        "next_due": "2026-09-02",
+        "notes": null,
+        "date_today": "2026-08-31",
+        "days_until_due": 2
+      },
+      "matches_database": true
+    },
+    {
+      "prompt": "What are the cost and list price of CC-HOOD-NAVY for ticket 103?",
+      "tool": "get_pricing",
+      "arguments": {
+        "sku": "CC-HOOD-NAVY"
+      },
+      "output": {
+        "sku": "CC-HOOD-NAVY",
+        "unit_cost": 22.0,
+        "list_price": 58.0,
+        "margin_per_unit": 36.0
+      },
+      "matches_database": true
+    }
+  ],
+  "recorded_against": "data/campus_customs_new.db as it stood right after being reset to the original values (Problem 4, before the Problem 9 run)",
+  "note": "Problem 9 later changed the working copy: lease 1 next_due moved from 2026-09-02 to 2026-10-02 (rent paid), invoice 501 became paid, and checking dropped to 160.0. The get_lease_due values here (next_due 2026-09-02, days_until_due 2) were correct for the reset state and match the original database."
+}
